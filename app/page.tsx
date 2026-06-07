@@ -4,160 +4,105 @@ import Image from 'next/image'
 const preview = [
   {
     id: 1,
-    title: 'No. 01 — Wide Brim Brooch Hat',
+    title: 'Leopard Brooch Cap',
     category: 'Hats',
+    image: '/images/archive-01.jpg',
     bg: '#2C3D2E',
-    span: 'col-span-2 row-span-2',
-    aspect: 'aspect-[2/3]',
   },
-  {
-    id: 2,
-    title: 'No. 02 — Archive Tote',
-    category: 'Bags',
-    bg: '#7A2733',
-    span: 'col-span-1',
-    aspect: 'aspect-square',
-  },
-  {
-    id: 3,
-    title: 'No. 03 — Brocade Jacket',
-    category: 'Jackets',
-    bg: '#C4774A',
-    span: 'col-span-1',
-    aspect: 'aspect-square',
-  },
+  { id: 2, title: 'Archive Tote', category: 'Bags', bg: '#7A2733' },
+  { id: 3, title: 'Brocade Jacket', category: 'Jackets', bg: '#C4774A' },
 ]
 
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative h-screen bg-ink flex flex-col items-center justify-center text-cream overflow-hidden">
-        <div className="text-center px-6 relative z-10">
-          <p className="font-sans text-xs tracking-[0.35em] uppercase mb-10 opacity-40">
-            Est. in devotion to the found
-          </p>
-          <h1 className="font-serif font-light text-[clamp(5rem,14vw,14rem)] leading-[0.9] tracking-tight mb-10">
+      {/* Hero — full screen, image leads */}
+      <section className="relative w-full h-screen overflow-hidden">
+        <Image
+          src="/images/archive-01.jpg"
+          alt="The Amy Archive"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-ink/40" />
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+          <span className="font-sans text-[9px] tracking-[0.4em] uppercase text-cream/40">
+            Scroll
+          </span>
+          <div className="w-px h-10 bg-cream/25" />
+        </div>
+      </section>
+
+      {/* Brand reveal */}
+      <section className="bg-white px-6 md:px-16 py-20 md:py-28 border-b border-ink/[0.06]">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-10">
+          <h1 className="font-serif font-light text-[clamp(3rem,6vw,5.5rem)] leading-[1.05]">
             The Amy<br />Archive
           </h1>
-          <div className="w-px h-14 bg-cream/20 mx-auto mb-8" />
-          <p className="font-serif italic text-[clamp(1rem,2.5vw,1.5rem)] tracking-wide opacity-60">
-            Objects with a past. Worn with intention.
-          </p>
-        </div>
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-30">
-          <span className="font-sans text-[10px] tracking-[0.3em] uppercase">Archive</span>
-          <div className="w-px h-10 bg-cream" />
-        </div>
-      </section>
-
-      {/* Philosophy */}
-      <section className="bg-cream py-28 md:py-40 px-6">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-          <div>
-            <h2 className="font-serif font-light text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.1]">
-              Not just objects.<br />
-              <em>Investments<br />in feeling.</em>
-            </h2>
-          </div>
-          <div className="space-y-6">
-            <p className="font-sans font-light text-base leading-relaxed opacity-70">
-              Something that comes from the past makes you feel more invested in
-              what you carry forward. Each piece in the Amy Archive is sourced
-              for its history, elevated through quality, and worn as a
-              declaration of knowing exactly who you are.
-            </p>
-            <p className="font-sans font-light text-base leading-relaxed opacity-70">
-              Hats adorned with brooches. Bags with memory. Sweaters, jackets,
-              jeans — all carrying the weight of a life well lived before yours.
-              Unisex. Ageless. Uncompromising.
+          <div className="md:max-w-[340px] space-y-6 md:pb-1">
+            <p className="font-sans font-light text-sm leading-[1.9] text-ink/55">
+              Objects with a past, worn with intention. Hats, bags, sweaters,
+              jackets, jeans — each piece sourced for its history and elevated
+              through quality.
             </p>
             <Link
               href="/archive"
-              className="inline-flex items-center gap-4 font-sans text-xs tracking-[0.2em] uppercase border-b border-ink pb-1 hover:opacity-40 transition-opacity mt-2"
+              className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase border-b border-ink pb-0.5 hover:opacity-40 transition-opacity"
             >
               View the Archive
-              <span className="text-[10px]">→</span>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Preview */}
-      <section className="bg-parchment py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <p className="font-sans text-[10px] tracking-[0.35em] uppercase opacity-40 mb-10">
-            From the Archive
-          </p>
-
-          {/* Editorial asymmetric grid */}
-          <div className="grid grid-cols-3 gap-3 md:gap-4">
-            {/* Large left piece */}
-            <Link href="/archive" className="col-span-3 md:col-span-2 group">
-              <div className="w-full aspect-[3/4] md:aspect-[4/5] relative overflow-hidden bg-ink">
-                <Image
-                  src="/images/archive-01.jpg"
-                  alt="Leopard print hat with gold brooches"
-                  fill
-                  className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
-                  sizes="(max-width: 768px) 100vw, 66vw"
-                  priority
-                />
-                <div className="absolute inset-0 bg-ink/10 group-hover:bg-ink/20 transition-colors duration-700" />
-                <div className="absolute bottom-5 left-5">
-                  <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-cream/60 mb-1">
-                    {preview[0].category}
-                  </p>
-                  <p className="font-serif text-cream text-lg drop-shadow-sm">
-                    {preview[0].title}
-                  </p>
-                </div>
+      {/* Archive preview */}
+      <section className="bg-white px-6 md:px-16 pt-16 pb-20 md:pt-20 md:pb-28">
+        <p className="font-sans text-[9px] tracking-[0.4em] uppercase text-ink/35 mb-10">
+          From the Archive
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
+          {preview.map((piece) => (
+            <Link href="/archive" key={piece.id} className="group">
+              <div
+                className="relative w-full aspect-[3/4] overflow-hidden mb-3"
+                style={{ backgroundColor: piece.bg }}
+              >
+                {'image' in piece && piece.image && (
+                  <Image
+                    src={piece.image as string}
+                    alt={piece.title}
+                    fill
+                    className="object-cover object-center group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                  />
+                )}
               </div>
+              <p className="font-sans text-[9px] tracking-[0.2em] uppercase text-ink/35 mb-1">
+                {piece.category}
+              </p>
+              <p className="font-serif font-light text-[1.05rem]">{piece.title}</p>
             </Link>
-
-            {/* Two stacked right pieces */}
-            <div className="col-span-3 md:col-span-1 grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-4">
-              {preview.slice(1).map((piece) => (
-                <Link href="/archive" key={piece.id} className="group">
-                  <div
-                    className="w-full aspect-square relative overflow-hidden"
-                    style={{ backgroundColor: piece.bg }}
-                  >
-                    <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/10 transition-colors duration-700" />
-                    <div className="absolute bottom-4 left-4">
-                      <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-cream/40 mb-1">
-                        {piece.category}
-                      </p>
-                      <p className="font-serif text-cream/70 text-sm">
-                        {piece.title}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-14 text-center">
-            <Link
-              href="/archive"
-              className="inline-flex items-center gap-4 font-sans text-xs tracking-[0.2em] uppercase border border-ink px-10 py-4 hover:bg-ink hover:text-cream transition-colors duration-400"
-            >
-              Enter the Archive
-            </Link>
-          </div>
+          ))}
+        </div>
+        <div className="mt-14 pt-8 border-t border-ink/[0.06] flex justify-end">
+          <Link
+            href="/archive"
+            className="font-sans text-[11px] tracking-[0.2em] uppercase hover:opacity-40 transition-opacity"
+          >
+            Full Archive →
+          </Link>
         </div>
       </section>
 
-      {/* Closing quote */}
-      <section className="bg-wine text-cream py-28 md:py-40 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="font-serif italic font-light text-[clamp(1.6rem,4vw,3.2rem)] leading-[1.4] mb-12">
-            &ldquo;Old stuff is made so much better. Quality from the past makes you
-            feel more invested in the pieces you carry forward.&rdquo;
+      {/* Quote */}
+      <section className="bg-[#FAF8F5] border-t border-ink/[0.06] px-6 md:px-16 py-20 md:py-28">
+        <div className="max-w-xl mx-auto text-center">
+          <p className="font-serif italic font-light text-[clamp(1.2rem,2.5vw,1.8rem)] leading-[1.7] text-ink/75">
+            &ldquo;Old stuff is made so much better. Quality from the past makes
+            you feel more invested in the pieces you carry forward.&rdquo;
           </p>
-          <div className="w-8 h-px bg-cream/30 mx-auto mb-6" />
-          <p className="font-sans text-[10px] tracking-[0.35em] uppercase opacity-50">
+          <p className="font-sans text-[9px] tracking-[0.35em] uppercase text-ink/30 mt-8">
             Amy
           </p>
         </div>
