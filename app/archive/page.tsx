@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export const metadata = {
   title: 'Archive — The Amy Archive',
 }
@@ -6,10 +8,11 @@ const pieces = [
   {
     id: 1,
     number: '01',
-    title: 'Wide Brim Brooch Hat',
+    title: 'Leopard Brooch Cap',
     category: 'Hats',
     bg: '#2C3D2E',
-    aspect: '3/4',
+    aspect: '4/3',
+    image: '/images/archive-01.jpg',
   },
   {
     id: 2,
@@ -104,6 +107,15 @@ export default function Archive() {
                 className="w-full relative overflow-hidden"
                 style={{ aspectRatio: piece.aspect, backgroundColor: piece.bg }}
               >
+                {'image' in piece && piece.image && (
+                  <Image
+                    src={piece.image as string}
+                    alt={piece.title}
+                    fill
+                    className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                )}
                 <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/10 transition-colors duration-700" />
                 <div className="absolute top-4 left-4">
                   <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-cream/30">

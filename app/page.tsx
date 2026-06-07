@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const preview = [
   {
@@ -93,16 +94,21 @@ export default function Home() {
           <div className="grid grid-cols-3 gap-3 md:gap-4">
             {/* Large left piece */}
             <Link href="/archive" className="col-span-3 md:col-span-2 group">
-              <div
-                className="w-full aspect-[3/4] md:aspect-[4/5] relative overflow-hidden"
-                style={{ backgroundColor: preview[0].bg }}
-              >
-                <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/10 transition-colors duration-700" />
+              <div className="w-full aspect-[3/4] md:aspect-[4/5] relative overflow-hidden bg-ink">
+                <Image
+                  src="/images/archive-01.jpg"
+                  alt="Leopard print hat with gold brooches"
+                  fill
+                  className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, 66vw"
+                  priority
+                />
+                <div className="absolute inset-0 bg-ink/10 group-hover:bg-ink/20 transition-colors duration-700" />
                 <div className="absolute bottom-5 left-5">
-                  <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-cream/40 mb-1">
+                  <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-cream/60 mb-1">
                     {preview[0].category}
                   </p>
-                  <p className="font-serif text-cream/70 text-lg">
+                  <p className="font-serif text-cream text-lg drop-shadow-sm">
                     {preview[0].title}
                   </p>
                 </div>
