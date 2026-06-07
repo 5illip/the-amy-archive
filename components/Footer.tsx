@@ -8,7 +8,7 @@ export default function Footer() {
           The Amy Archive
         </p>
         <nav className="flex gap-8">
-          {['Archive', 'About', 'Contact'].map((label) => (
+          {['Archive', 'Shop', 'About', 'Contact'].map((label) => (
             <Link
               key={label}
               href={`/${label.toLowerCase()}`}

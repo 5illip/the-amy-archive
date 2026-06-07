@@ -36,7 +36,7 @@ export default function Nav() {
           The Amy Archive
         </Link>
         <div className="flex gap-8">
-          {['Archive', 'About', 'Contact'].map((label) => (
+          {['Archive', 'Shop', 'About', 'Contact'].map((label) => (
             <Link
               key={label}
               href={`/${label.toLowerCase()}`}
